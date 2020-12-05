@@ -1,0 +1,6 @@
+framework module Pods_Civil_App_Civil_AppUITests {
+  umbrella header "Pods-Civil App-Civil AppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
