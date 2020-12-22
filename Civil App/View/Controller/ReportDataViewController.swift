@@ -17,6 +17,8 @@ class ReportDataViewController: UIViewController {
         }
     }
     
+    var reportDataModel:ReportDataModel = ReportDataModel()
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
@@ -92,6 +94,6 @@ extension ReportDataViewController:UINavigationControllerDelegate,UIImagePickerC
             print("Image not found!")
             return
         }
-        //imageTake.image = selectedImage
+        reportDataModel.image = selectedImage
     }
 }
