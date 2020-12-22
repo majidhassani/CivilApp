@@ -10,6 +10,7 @@ import DatePicker
 
 class ReportDataViewController: UIViewController {
     
+    var imagePicker: UIImagePickerController!
     var selectedDate:String = ""{
         didSet{
             self.dateTextField.text = self.selectedDate
@@ -20,9 +21,9 @@ class ReportDataViewController: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var positionTextField: UITextField!
+    @IBOutlet weak var imageTake: UIButton!
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,9 +42,56 @@ class ReportDataViewController: UIViewController {
             }
         }
         datePicker.show(in: self, on: sender)
-        
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+      
+        let takeImageAlert = UIAlertController(title: "Take Image", message: "Take Image or Select Photo", preferredStyle: UIAlertController.Style.actionSheet)
+
+        let takeImageAction = UIAlertAction(title: "Take Image", style: .default) { (action: UIAlertAction) in
+            self.selectImageFrom(.camera)
+        }
+        let selectPhotoAction = UIAlertAction(title: "Select Photo", style: .default) { (action: UIAlertAction) in
+            self.selectImageFrom(.photoLibrary)
+        }
+
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        takeImageAlert.addAction(takeImageAction)
+        takeImageAlert.addAction(selectPhotoAction)
+        takeImageAlert.addAction(cancelAction)
+        self.present(takeImageAlert, animated: true, completion: nil)
     }
     
 
+}
 
+extension ReportDataViewController:UINavigationControllerDelegate,UIImagePickerControllerDelegate{
+    
+    
+    enum ImageSource {
+        case photoLibrary
+        case camera
+    }
+    
+    func selectImageFrom(_ source: ImageSource){
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        switch source {
+        case .camera:
+            imagePicker.sourceType = .camera
+        case .photoLibrary:
+            imagePicker.sourceType = .photoLibrary
+        }
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        imagePicker.dismiss(animated: true, completion: nil)
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            print("Image not found!")
+            return
+        }
+        //imageTake.image = selectedImage
+    }
 }

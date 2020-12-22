@@ -108,6 +108,9 @@
                                 <state key="normal" title="Take Photo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hXb-VR-l0L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -154,6 +157,7 @@
                     <navigationItem key="navigationItem" title="Report Data" id="XlU-b0-sYL"/>
                     <connections>
                         <outlet property="dateTextField" destination="2gy-oM-TwZ" id="Muy-f7-1a3"/>
+                        <outlet property="imageTake" destination="GDl-89-LyC" id="g7p-E8-xEd"/>
                         <outlet property="nameTextField" destination="IiB-m8-i9o" id="xm2-0I-BKY"/>
                         <outlet property="positionTextField" destination="eQz-CU-eFR" id="uWr-KR-bD1"/>
                         <outlet property="titleTextField" destination="x9J-dZ-MIZ" id="68E-5P-O4Y"/>
