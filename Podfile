@@ -5,13 +5,14 @@ target 'Civil App' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
- 	pod 'IQKeyboardManagerSwift'
-    	pod 'SwiftyJSON'
+ 	  pod 'IQKeyboardManagerSwift'
+    pod 'SwiftyJSON'
   	pod 'Alamofire'
   	pod 'SDWebImage'
   	pod 'RxSwift'
   	pod 'RxCocoa'
     pod 'ReachabilitySwift'
+    pod 'DatePicker', '~> 1.3.0'
 
   # Pods for Civil App
 
